@@ -1,0 +1,41 @@
+<section>
+  <div class="download-sentiment-container">
+    <a class="download-sentiment" href="{{ url_for('tweet_csv') }}"
+      >Download CSV</a
+    >
+  </div>
+  <div class="sentiment-container">
+    <div class="sentiment-content-container">
+      <div>
+        <h1>Results</h1>
+        <p>
+          The sentiment analysis is based on the last seven days of tweet data
+        </p>
+        <p>The general sentiment for the past seven days is {{sentiment}}</p>
+        <p>
+          There were a total of {{total_tweets}} tweets retrieved from the
+          Twitter API
+        </p>
+      </div>
+    </div>
+    <div class="sentiment-chart-container">
+      <div class="chart-container" id="chart5"></div>
+      <div class="chart-container" id="chart6"></div>
+    </div>
+  </div>
+</section>
+
+<!-- <img
+  style="width: 100px; height: 100px"
+  src="data:image/png;base64, {{ plot_url }}"
+  alt=""
+/> -->
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+  var graph5 = {{ graph5JSON | safe}}
+  Plotly.plot('chart5', graph5, {})
+
+  var graph6 = {{ graph6JSON | safe}}
+  Plotly.plot('chart6', graph6, {})
+</script>

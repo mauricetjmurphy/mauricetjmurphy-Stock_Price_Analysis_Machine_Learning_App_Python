@@ -1,0 +1,24 @@
+---
+# Package Overview
+package_name: regression_model
+
+# Data Files
+training_data_file: train.csv
+test_data_file: test.csv
+
+# set train/test split
+test_size: 0.1
+
+# to set the random seed
+random_state: 42
+
+# Constants
+DEVICE: cpu
+SEQ_LEN: 32
+BATCH_SIZE: 16
+EPOCHS: 5
+
+class_names:
+  - negative
+  - neutral
+  - positive

@@ -1,0 +1,35 @@
+{% extends 'layout.html'%} {%block content%}
+
+  <body>
+    <form name="login-form" id="login-form">
+      <div class="login-page-container">
+        <div class="login-container">
+          <div class="icon-container">
+            <img
+              class="fingerprint"
+              src="../static/images/fingerprint.svg"
+              alt=""
+            />
+          </div>
+          <div class="email-container">
+            <input type="email" name="email" id="" placeholder="Email" />
+          </div>
+          <div class="password-container">
+            <input type="password" name="password" id="" placeholder="Password"/>
+          </div>
+          <p class="error error-hidden"></p>
+          <input type="submit" value="Submit">
+          <div class="register-container">
+            <p>
+              Not signed up yet?
+              <a class="register-link" href="{{ url_for('register') }}"
+                >Register</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
+{%endblock%}

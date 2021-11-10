@@ -1,0 +1,50 @@
+<div class="todays-perform-container">
+  <div class="todays-perform-title">
+    <h1>Todays Performance ({{stock}})</h1>
+  </div>
+  <div class="todays-perform-stats">
+    <ul>
+      <li>Open</li>
+      <li>High</li>
+      <li>Low</li>
+      <li>Close</li>
+      <li>Adj Close</li>
+      <li>Volume</li>
+    </ul>
+  </div>
+  {% if not df.empty %}
+  <div class="todays-perform-stats">
+    <ul>
+      <li>{{ df['Open'][-1] | round(2,'floor') }}</li>
+      <li>{{ df['High'][-1] | round(2,'floor')}}</li>
+      <li>{{ df['Low'][1] | round(2,'floor')}}</li>
+      <li>{{ df['Close'][-1] | round(2,'floor')}}</li>
+      <li>{{ df['Adj Close'][-1] | round(2,'floor')}}</li>
+      <li>{{df['Volume'][-1]}}</li>
+    </ul>
+  </div>
+  {% endif %}
+</div>
+<div class="charts-container">
+  <div class="chart-container" id="chart1"></div>
+  <div class="chart-container" id="chart2"></div>
+</div>
+<div class="charts-container">
+  <div class="chart-container" id="chart3"></div>
+  <div class="chart-container" id="chart4"></div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+  var graph1 = {{ graph1JSON | safe}}
+  Plotly.plot('chart1', graph1, {})
+
+  var graph2 = {{ graph2JSON | safe}}
+  Plotly.plot('chart2', graph2, {})
+
+  var graph3 = {{ graph3JSON | safe}}
+  Plotly.plot('chart3', graph3, {})
+
+  var graph4 = {{ graph4JSON | safe}}
+  Plotly.plot('chart4', graph4, {})
+</script>

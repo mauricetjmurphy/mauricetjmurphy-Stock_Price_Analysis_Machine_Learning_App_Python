@@ -1,0 +1,85 @@
+{% extends 'layout.html'%} {%block content%} {% include "includes/navbar.html"
+%}
+
+<section class="dashboard">
+  <div class="sidebar">
+    <div>
+      <div class="sidebar-header">
+        <h1>Dashboard</h1>
+      </div>
+
+      <form action="/predict" method="POST">
+        {{ form.csrf_token() }}
+        <div class="input-section">
+          <h2>Select a stock</h2>
+          {% if form.stock.errors %}
+          <!-- prettier-ignore -->
+          {{ form.stock(id='model-stock') }}
+          <!-- prettier-ignore -->
+          {% for error in form.stock.errors %}
+          <div class="invalid-feedback">
+            <span>{{error}}</span>
+          </div>
+          {% endfor %}
+          <!-- prettier-ignore -->
+          {% else %}
+          <!-- prettier-ignore -->
+          {{ form.stock(id='model-stock') }}
+          <!-- prettier-ignore -->
+          {% endif %}
+
+          <h2>Select a model</h2>
+          {% if form.model.errors %}
+          <!-- prettier-ignore -->
+          {{ form.model(id='model') }}
+          <!-- prettier-ignore -->
+          {% for error in form.name.errors %}
+          <div class="invalid-feedback">
+            <span>{{error}}</span>
+          </div>
+          {% endfor %}
+          <!-- prettier-ignore -->
+          {% else %}
+          <!-- prettier-ignore -->
+          {{ form.model(id='model') }}
+          <!-- prettier-ignore -->
+          {% endif %}
+        </div>
+        <button id="model-btn" type="submit">Run</button>
+      </form>
+    </div>
+
+    <div class="analysis-tab-container">
+      <a class="analysis-tab" onclick="toggleTab()" href="{{ url_for('data') }}"
+        >Stock Analysis<i class="fas fa-angle-double-right"></i
+      ></a>
+
+      <a
+        class="analysis-tab"
+        onclick="toggleTab()"
+        href="{{ url_for('sentiment') }}"
+        >Sentiment Analysis<i class="fas fa-angle-double-right"></i
+      ></a>
+
+      <div class="analysis-tab"></div>
+      <div class="analysis-tab"></div>
+      <div class="analysis-tab"></div>
+    </div>
+  </div>
+
+  <div id="sentiment" class="main-section">
+    <div class="background-image"></div>
+    <div class="model-response"></div>
+  </div>
+
+  <div id="loader" class="main-section-loader" style="display: none">
+    <p style="text-align: center">
+      Fetching Twitter data and processing the model. This can take up to 5
+      minutes depending on your internet connection and the power of your CPU.
+    </p>
+    <img src="../static/images/loader2.gif" alt="" />
+    <h1 class="loading">Processing...</h1>
+  </div>
+</section>
+
+{% include "includes/footer.html" %} {%endblock%}

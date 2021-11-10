@@ -1,0 +1,103 @@
+{% extends 'layout.html'%} {%block content%} {% include "includes/navbar.html"
+%}
+<section class="dashboard">
+  <div class="sidebar">
+    <div>
+      <div class="sidebar-header">
+        <h1>Dashboard</h1>
+      </div>
+
+      <form action="" , method="POST">
+        {{ form.csrf_token() }}
+        <div class="input-section">
+          <h2>Select a stock</h2>
+          {% if form.stock.errors %}
+          <!-- prettier-ignore -->
+          {{ form.stock(id='stock-name') }}
+          <!-- prettier-ignore -->
+          {% for error in form.stock.errors %}
+          <div class="invalid-feedback">
+            <span>{{error}}</span>
+          </div>
+          {% endfor %}
+          <!-- prettier-ignore -->
+          {% else %}
+          <!-- prettier-ignore -->
+          {{ form.stock(id='stock-name') }}
+          <!-- prettier-ignore -->
+          {% endif %}
+
+          <h2>Select a date range</h2>
+          <label for="fromDate">From</label>
+          {% if form.from_date.errors %}
+          <!-- prettier-ignore -->
+          {{ form.from_date(id='from_date',class='datepicker') }}
+          <!-- prettier-ignore -->
+          {{ form.hidden_tag() }}
+          <!-- prettier-ignore -->
+          {% for error in form.from_date.errors %}
+          <div class="invalid-feedback">
+            <span>{{error}}</span>
+          </div>
+          {% endfor %}
+          <!-- prettier-ignore -->
+          {% else %}
+          <!-- prettier-ignore -->
+          {{ form.from_date(id='from_date', class='datepicker') }}
+          <!-- prettier-ignore -->
+          {{ form.hidden_tag() }}
+          <!-- prettier-ignore -->
+          {% endif %}
+
+          <label for="toDate">To</label>
+          {% if form.to_date.errors %}
+          <!-- prettier-ignore -->
+          {{ form.to_date(id='to_date', class='datepicker') }}
+          <!-- prettier-ignore -->
+          {{ form.hidden_tag() }}
+          <!-- prettier-ignore -->
+          {% for error in form.to_date.errors %}
+          <div class="invalid-feedback">
+            <span>{{error}}</span>
+          </div>
+          {% endfor %}
+          <!-- prettier-ignore -->
+          {% else %}
+          <!-- prettier-ignore -->
+          {{ form.to_date(id='to_date', class='datepicker') }}
+          <!-- prettier-ignore -->
+          {{ form.hidden_tag() }}
+          <!-- prettier-ignore -->
+          {% endif %}
+        </div>
+        <button id="stock-btn" type="submit">Update</button>
+      </form>
+    </div>
+
+    <div class="analysis-tab-container">
+      <a class="analysis-tab" onclick="toggleTab()" href="{{ url_for('data') }}"
+        >Stock Analysis<i class="fas fa-angle-double-right"></i
+      ></a>
+
+      <a
+        class="analysis-tab"
+        onclick="toggleTab()"
+        href="{{ url_for('sentiment') }}"
+        >Sentiment Analysis<i class="fas fa-angle-double-right"></i
+      ></a>
+      <div class="analysis-tab"></div>
+      <div class="analysis-tab"></div>
+      <div class="analysis-tab"></div>
+    </div>
+  </div>
+  <div id="stock-data" class="main-section">
+    <div class="background-image"></div>
+    <div class="stock-response"></div>
+  </div>
+
+  <div id="loader" class="main-section-loader" style="display: none">
+    <img src="../static/images/loader2.gif" alt="" />
+    <h1 class="loading">Loading Data...</h1>
+  </div>
+</section>
+{% include "includes/footer.html" %} {%endblock%}
