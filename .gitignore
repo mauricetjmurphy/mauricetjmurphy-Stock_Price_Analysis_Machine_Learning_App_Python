@@ -9,6 +9,7 @@ __pycache__/
 nosetests.xml
 coverage.xml
 
+env
 .env
 .notebooks/
 .ipynb_checkpoints/
