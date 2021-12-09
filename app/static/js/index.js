@@ -6,6 +6,7 @@
   });
 })(jQuery);
 
+
 $(document).ready(function () {
   $("#stock-btn").click(function (e) {
     e.preventDefault();

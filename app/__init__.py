@@ -5,7 +5,6 @@ from flask_pymongo import PyMongo
 
 
 app = Flask(__name__)
-# model = torch.load('app/models/model.pth', map_location=torch.device('cpu'))
 app.config.from_object(Config)
 
 mongo = PyMongo(app)

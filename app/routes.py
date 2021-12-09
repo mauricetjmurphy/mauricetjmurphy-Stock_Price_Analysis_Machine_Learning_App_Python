@@ -7,7 +7,6 @@ import numpy as np
 
 import torch
 from transformers import BertTokenizer
-# from pytorch_transformers import *
 
 import plotly
 import plotly.graph_objs as go
@@ -70,7 +69,6 @@ def data():
     form.stock.choices = [i for i in stocks]
 
     gc.collect()
-
     print(psutil.Process(os.getpid()).memory_info())
     
     return render_template('index.html', form=form, stock='', first_name=first_name)
@@ -160,11 +158,11 @@ def predict():
 
         # Initializing the tokenizer
         tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
-        # tokenizer = tokenizer_class.from_pretrained(pretrained_weights)
+       
 
         # Instantiating the twiiter data class to beging retrieving the tweet data
         td = TwitterData(session['stock_ticker'], session['stock_name'])
-        df = td.getTweetData()
+        # df = td.getTweetData()
         
 
         # if not (os.path.isfile(f'app/static/data/{session["stock_name"]}_data.csv')):
@@ -202,13 +200,13 @@ def predict():
         
         labels = ['distplot'] # name of the dataset
         fig5 = ff.create_distplot([seqlen], labels)
-        fig5.update_xaxes(title='Token Count')
+        fig5.update_xaxes(title='Word Count')
         fig5.update_yaxes(title='Density')
         graph5JSON = json.dumps(fig5, cls=plotly.utils.PlotlyJSONEncoder)
 
 
         fig6 = go.Figure(data=[go.Bar(x=class_names, y=counts,
-            hovertext=['27% market share', '24% market share', '19% market share'])])
+            hovertext=['27% total', '24% total', '19% total'])])
         colors = ['#eb4034','#e3820b', '#32a852']
         fig6.update_traces(marker_color=colors, marker_line_color='rgb(8,48,107)',
                   marker_line_width=1.5, opacity=0.6)

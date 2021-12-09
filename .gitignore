@@ -13,3 +13,7 @@ env
 .env
 .notebooks/
 .ipynb_checkpoints/
+
+# ML Model
+/trained_models
+my_state
