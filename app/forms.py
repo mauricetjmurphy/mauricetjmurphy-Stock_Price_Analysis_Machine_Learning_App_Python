@@ -16,5 +16,8 @@ class StockForm(FlaskForm):
 
 class ModelForm(FlaskForm):
     stock = SelectField(choices=[], validators=[DataRequired()])
-    model = SelectField(u'Model', choices=[('BERT', 'Bert')], validators=[DataRequired()])
+    model = SelectField(u'Model', choices=[('BERT')], validators=[DataRequired()])
+    percentage = SelectField(choices=[], validators=[DataRequired()])
+
+
     

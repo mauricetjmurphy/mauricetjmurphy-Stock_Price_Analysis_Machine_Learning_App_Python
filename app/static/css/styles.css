@@ -331,6 +331,82 @@ li {
   height: 100%;
 }
 
+.info-container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.headline-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.headline-item {
+  border: none;
+  width: 100%;
+}
+
+.headline-link {
+  color: #000;
+  width: 100%;
+}
+
+.headline-link:hover {
+  color: #5b90bf;
+}
+
+.info-heading {
+  padding-bottom: 15px;
+  font-weight: bold;
+}
+
+.headline-heading {
+  font-weight: bold;
+}
+
+/*---------Regression section---------*/
+.regression-chart-container {
+  width: 100%;
+}
+
+.reg-chart-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+th {
+  width: 100px;
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px auto;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: #8e96a1;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
 /*---------Sentiment section---------*/
 
 .download-sentiment-container {

@@ -23,6 +23,18 @@ class FinanceData:
         return data
 
 
+    def fetchStockInfo(self, ticker):
+        stock = yf.Ticker(ticker)
+        info = stock.info
+        return info
+
+    
+    def fetchStockNews(self, ticker):
+        stock = yf.Ticker(ticker)
+        news = stock.news
+        return news
+
+
     def recommendations():
         tickers = si.tickers_sp500()
         recommendations = []

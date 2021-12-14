@@ -25,6 +25,18 @@
   </div>
   {% endif %}
 </div>
+<div class="info-container">
+  <h1 class="info-heading">Company Information</h1>
+  <p>{{info.longBusinessSummary}}</p>
+</div>
+<div>
+  <ul class="headline-container">
+    <h1 class="headline-heading">News</h1>
+    {% for item in news %}
+        <li class="headline-item"><a class="headline-link" href="{{ item.link }}">- {{ item.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
 <div class="charts-container">
   <div class="chart-container" id="chart1"></div>
   <div class="chart-container" id="chart2"></div>

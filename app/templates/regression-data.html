@@ -1,0 +1,20 @@
+<section>
+
+    <h1>Linear Regression</h1>
+
+      <div class="regression-chart-container">
+        <div class="reg-chart-container" id="chart7"></div>
+      </div>
+
+      {{ df.to_html(classes="table styled-table") | safe}}
+
+  </section>
+  
+
+  
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script>
+    var graph7 = {{ graph7JSON | safe}}
+    Plotly.plot('chart7', graph7, {})
+  
+  </script>

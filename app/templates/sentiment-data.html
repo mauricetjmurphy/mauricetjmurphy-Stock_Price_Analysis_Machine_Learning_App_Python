@@ -9,9 +9,9 @@
       <div>
         <h1>Results</h1>
         <p>
-          The sentiment analysis is based on the last seven days of tweet data
+          The sentiment analysis is based on the last five days of tweet data
         </p>
-        <p>The general sentiment for the past seven days is {{sentiment}}</p>
+        <p>The general sentiment for the past five days is {{sentiment}}</p>
         <p>
           There were a total of {{total_tweets}} tweets retrieved from the
           Twitter API
@@ -25,11 +25,6 @@
   </div>
 </section>
 
-<!-- <img
-  style="width: 100px; height: 100px"
-  src="data:image/png;base64, {{ plot_url }}"
-  alt=""
-/> -->
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script>

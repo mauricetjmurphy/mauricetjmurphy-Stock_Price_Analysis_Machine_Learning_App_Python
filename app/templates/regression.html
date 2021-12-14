@@ -1,0 +1,68 @@
+{% extends 'layout.html'%} {%block content%} {% include "includes/navbar.html"
+%}
+<section class="dashboard">
+    <div class="sidebar">
+      <div>
+        <div class="sidebar-header">
+          <h1>Dashboard</h1>
+        </div>
+  
+        <form action="" , method="POST">
+          {{ form.csrf_token() }}
+          <div class="input-section">
+            <h2>Select a stock</h2>
+            {% if form.stock.errors %}
+            <!-- prettier-ignore -->
+            {{ form.stock(id='stock-name') }}
+            <!-- prettier-ignore -->
+            {% for error in form.stock.errors %}
+            <div class="invalid-feedback">
+              <span>{{error}}</span>
+            </div>
+            {% endfor %}
+            <!-- prettier-ignore -->
+            {% else %}
+            <!-- prettier-ignore -->
+            {{ form.stock(id='stock-name') }}
+            <!-- prettier-ignore -->
+            {% endif %}
+  
+          </div>
+          <button id="regression-btn" type="submit">Run model</button>
+        </form>
+      </div>
+  
+      <div class="analysis-tab-container">
+        <a class="analysis-tab" onclick="toggleTab()" href="{{ url_for('data') }}"
+          >Stock Analysis<i class="fas fa-angle-double-right"></i
+        ></a>
+
+        <a
+        class="analysis-tab"
+        onclick="toggleTab()"
+        href="{{ url_for('regression') }}"
+        >Price Forecasting<i class="fas fa-angle-double-right"></i
+      ></a>
+  
+        <a
+          class="analysis-tab"
+          onclick="toggleTab()"
+          href="{{ url_for('sentiment') }}"
+          >Sentiment Analysis<i class="fas fa-angle-double-right"></i
+        ></a>
+       
+        <div class="analysis-tab"></div>
+        <div class="analysis-tab"></div>
+      </div>
+    </div>
+    <div id="regression" class="main-section">
+      <div class="background-image"></div>
+      <div class="regression-response"></div>
+    </div>
+  
+    <div id="loader" class="main-section-loader" style="display: none">
+      <img src="../static/images/loader2.gif" alt="" />
+      <h1 class="loading">Loading Data...</h1>
+    </div>
+  </section>
+{% include "includes/footer.html" %} {%endblock%}

@@ -44,6 +44,24 @@
           {{ form.model(id='model') }}
           <!-- prettier-ignore -->
           {% endif %}
+
+          <h2>Dataset percentage</h2>
+          {% if form.percentage.errors %}
+          <!-- prettier-ignore -->
+          {{ form.percentage(id='percentage') }}
+          <!-- prettier-ignore -->
+          {% for error in form.name.errors %}
+          <div class="invalid-feedback">
+            <span>{{error}}</span>
+          </div>
+          {% endfor %}
+          <!-- prettier-ignore -->
+          {% else %}
+          <!-- prettier-ignore -->
+          {{ form.percentage(id='percentage') }}
+          <!-- prettier-ignore -->
+          {% endif %}
+
         </div>
         <button id="model-btn" type="submit">Run</button>
       </form>
@@ -55,13 +73,20 @@
       ></a>
 
       <a
+      class="analysis-tab"
+      onclick="toggleTab()"
+      href="{{ url_for('regression') }}"
+      >Price Forecasting<i class="fas fa-angle-double-right"></i
+    ></a>
+
+      <a
         class="analysis-tab"
         onclick="toggleTab()"
         href="{{ url_for('sentiment') }}"
         >Sentiment Analysis<i class="fas fa-angle-double-right"></i
       ></a>
 
-      <div class="analysis-tab"></div>
+     
       <div class="analysis-tab"></div>
       <div class="analysis-tab"></div>
     </div>

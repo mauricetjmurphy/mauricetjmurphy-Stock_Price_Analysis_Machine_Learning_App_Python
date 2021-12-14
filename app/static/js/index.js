@@ -36,13 +36,41 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+  $("#regression-btn").click(function (e) {
+    e.preventDefault();
+    var stock = $("#stock-name").val();
+
+    $.ajax({
+      url: "/regPredict",
+      type: "post",
+      data: { stock: stock },
+      beforeSend: function () {
+        $("#loader").show();
+        $("#regression").hide();
+      },
+      success: function (response) {
+        $(".regression-response").empty();
+        $(".regression-response").append(response.htmlresponse);
+      },
+      complete: function (data) {
+        $("#loader").hide();
+        $("#regression").show();
+        $(".background-image").hide();
+      },
+    });
+  });
+});
+
+$(document).ready(function () {
   $("#model-btn").click(function (e) {
     var stock = $("#model-stock").val();
+    var percentage = $("#percentage").val();
+
     e.preventDefault();
     $.ajax({
       url: "/predict",
       type: "post",
-      data: { stock: stock },
+      data: { stock: stock, percentage: percentage },
       beforeSend: function () {
         $("#loader").show();
         $("#sentiment").hide();
