@@ -6,7 +6,7 @@ from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
 
 today = date.today()
-pastdate = datetime.now() - relativedelta(days=12)
+pastdate = datetime.now() - relativedelta(days=21)
 
 
 class Regression:

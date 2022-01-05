@@ -33,7 +33,7 @@
   <ul class="headline-container">
     <h1 class="headline-heading">News</h1>
     {% for item in news %}
-        <li class="headline-item"><a class="headline-link" href="{{ item.link }}">- {{ item.title }}</a></li>
+        <li class="headline-item"><a class="headline-link" target='_blank' href="{{ item.link }}">- {{ item.title }}</a></li>
     {% endfor %}
   </ul>
 </div>

@@ -372,6 +372,13 @@ li {
   width: 100%;
 }
 
+.reg-heading {
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+  margin: 25px 0;
+}
+
 .reg-chart-container {
   width: 100%;
   margin: 0 auto;
@@ -488,6 +495,10 @@ footer {
   border-radius: 20px;
 }
 
+.login-heading {
+  margin-bottom: 15px;
+}
+
 .login-background {
   width: 100vw;
   height: 100vh;
@@ -574,9 +585,14 @@ input:focus {
 }
 
 /*---------Register Page---------*/
+.register-heading {
+  margin-bottom: 15px;
+}
+
 .error {
   color: red;
   font-size: 12px;
+  padding-bottom: 10px;
 }
 
 .error-hidden {

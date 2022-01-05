@@ -156,10 +156,10 @@ def reg_predict():
         re = Regression()
 
         df, preds = re.reg_predict(stock)
-
-        df.ta.ema(close='Adj Close', length=5, append=True)
-        df = df.iloc[5:]
-        preds_df = pd.DataFrame(preds, columns = ['Predicted Close']).iloc[5:]
+        df.ta.ema(close='Adj Close', length=8, append=True)
+        df = df.iloc[7:]
+        preds_df = pd.DataFrame(preds, columns = ['Predicted Close']).iloc[2:]
+        
         preds_df = preds_df.reset_index()
         df = df.reset_index()
         df = df.join(preds_df['Predicted Close'])
@@ -167,7 +167,7 @@ def reg_predict():
         fig1 = go.Figure()
         fig1.update_layout(autosize=False, width=1500, height=600)
         fig1.add_trace(go.Scatter(x=df.Date, y=df['Adj Close'], name="Adjusted Close"))
-        fig1.add_trace(go.Scatter(x=df.Date, y=df['EMA_5'], name="Moving Average"))
+        fig1.add_trace(go.Scatter(x=df.Date, y=df['EMA_8'], name="Moving Average"))
         fig1.add_trace(go.Scatter(x=df.Date, y=df['Predicted Close'], name="Predicted Close"))
         fig1.update_xaxes(rangeslider_visible=True, title='Date')
         fig1.update_yaxes(title='Adj Close')
@@ -202,7 +202,7 @@ def predict():
         fd = FinanceData()
         stocks = fd.fetchTickers()
         
-        # Saving the tick and tock name into session variables
+        # Saving the ticker and stock name into session variables
         session['stock_ticker'] = stock
         session['stock_name'] = stocks.get(stock)
         class_names = ['negative', 'neutral', 'positive']
@@ -228,7 +228,6 @@ def predict():
             counts = stock_info['counts']
             sentiment = stock_info['sentiment']
         else:
-            # df = pd.read_csv('app/static/data/3M_data.csv', sep='|')
             try:
                 df = td.getTweetData(stock, session['stock_name'])
             except:
@@ -292,7 +291,5 @@ def register():
 
 @app.route('/')
 def login():
-    
-    print(psutil.Process(os.getpid()).memory_info())
 
     return render_template('login.html')
