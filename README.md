@@ -1,6 +1,6 @@
 # StockZip
 
-StockZip in an application that provides support to both amature and professional traders when carrying out stock price forcasting.
+StockZip is an application that provides support to both amature and professional traders when carrying out stock price forcasting.
 
 ### Running the app locally
 
